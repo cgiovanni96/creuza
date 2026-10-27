@@ -1,0 +1,7 @@
+node_modules/
+.local/
+.output/
+.tanstack/
+dist/
+apps/start/src/routeTree.gen.ts
+*.log

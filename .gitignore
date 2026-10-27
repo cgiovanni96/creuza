@@ -1,0 +1,8 @@
+node_modules/
+.local/
+.output/
+dist/
+.tanstack/
+apps/web/src/routeTree.gen.ts
+.env
+.dev.vars
