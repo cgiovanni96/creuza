@@ -1,0 +1,14 @@
+{
+  "name": "creuza-local-integration-test",
+  "main": "entry.mjs",
+  "compatibility_date": "2026-10-27",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": false,
+  "vars": {
+    "DATABASE_URL": "postgresql://creuza_local@127.0.0.1:55440/creuza_local",
+    "AUTH_BASE_URL": "http://localhost:4330",
+    "WEB_ORIGIN": "http://localhost:4330",
+    "AUTH_SECRET": "LOCAL-ONLY-WORKER-TEST-SECRET-2026-123456"
+  },
+  "r2_buckets": [{ "binding": "TEST_MAIL", "bucket_name": "creuza-local-test-mail" }]
+}

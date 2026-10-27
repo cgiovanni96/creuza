@@ -1,0 +1,3 @@
+CREATE TABLE IF NOT EXISTS trips (id text PRIMARY KEY, name text NOT NULL CHECK (length(trim(name)) > 0), created_at timestamptz NOT NULL DEFAULT now());
+CREATE TABLE IF NOT EXISTS participants (id text PRIMARY KEY, trip_id text NOT NULL REFERENCES trips(id), account_id text NOT NULL REFERENCES "user"(id), name text NOT NULL, UNIQUE(trip_id, account_id));
+CREATE TABLE IF NOT EXISTS memberships (trip_id text NOT NULL REFERENCES trips(id), account_id text NOT NULL REFERENCES "user"(id), participant_id text NOT NULL REFERENCES participants(id), role text NOT NULL CHECK (role = 'Owner'), PRIMARY KEY(trip_id, account_id), UNIQUE(trip_id));
