@@ -1,0 +1,10 @@
+import { serve } from "@hono/node-server";
+import pg from "pg";
+import { makeAuth } from "./auth.mjs";
+import { createApp } from "./app.mjs";
+const pool=new pg.Pool({connectionString:"postgresql://creuza_local@127.0.0.1:55440/creuza_local"});
+const mailbox=[];
+const auth=makeAuth(pool,{baseURL:"http://localhost:4300",webOrigin:"http://localhost:4310",secret:"LOCAL-ONLY-CHANGE-THIS-SECRET-2026-ABCDEF"},async ({email,url})=>{mailbox.push({email,url});});
+const app=createApp({pool,auth,mailbox});
+serve({fetch:app.fetch,hostname:"127.0.0.1",port:4300});
+console.log("API locale: http://localhost:4300/api/reference");
